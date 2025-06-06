@@ -4,6 +4,15 @@ export class EmailService {
   private transporter: nodemailer.Transporter;
 
   constructor() {
+    // Debug log
+    console.log('SMTP Configuration:', {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: process.env.SMTP_SECURE,
+      user: process.env.SMTP_USER,
+      from: process.env.EMAIL_FROM
+    });
+
     this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
